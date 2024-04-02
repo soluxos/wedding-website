@@ -7,7 +7,7 @@ export default function Page({ story }) {
   return (
     <div>
       <Head>
-        <title>{story ? story.name : 'My Site'}</title>
+        <title>{story ? story.name : `Callum & Dawn's Wedding`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StoryblokComponent blok={story.content} />

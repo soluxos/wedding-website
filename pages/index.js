@@ -1,11 +1,5 @@
-import Head from "next/head";
-
-
-import {
-  useStoryblokState,
-  getStoryblokApi,
-  StoryblokComponent,
-} from "@storyblok/react";
+import Head from 'next/head';
+import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react';
 
 export default function Home({ story }) {
   story = useStoryblokState(story);
@@ -13,7 +7,7 @@ export default function Home({ story }) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Wedding website</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StoryblokComponent blok={story.content} />
@@ -22,10 +16,10 @@ export default function Home({ story }) {
 }
 
 export async function getStaticProps() {
-  let slug = "home";
+  let slug = 'home';
 
   let sbParams = {
-    version: "draft", // or 'published'
+    version: 'draft', // or 'published'
   };
 
   const storyblokApi = getStoryblokApi();

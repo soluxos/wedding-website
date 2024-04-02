@@ -1,24 +1,32 @@
-import "../styles/globals.css";
-import { storyblokInit, apiPlugin } from "@storyblok/react";
-import Feature from "../components/Feature";
-import Grid from "../components/Grid";
-import Page from "../components/Page";
-import Teaser from "../components/Teaser";
+import { storyblokInit, apiPlugin } from '@storyblok/react';
+import Theme from '@components/Theme';
+
+// Custom blocks
+import Page from '@/components/templates/Page';
+import Hero from '@components/blocks/Hero';
+import Location from '@components/blocks/Location';
+import About from '@components/blocks/About';
+import LinkButton from '@components/blocks/LinkButton';
+import Agenda from '@components/blocks/Agenda';
+import AgendaItem from '@components/blocks/AgendaItem';
 
 const components = {
-  feature: Feature,
-  grid: Grid,
-  teaser: Teaser,
   page: Page,
+  hero: Hero,
+  about: About,
+  location: Location,
+  linkButton: LinkButton,
+  agenda: Agenda,
+  agendaItem: AgendaItem,
 };
 
 storyblokInit({
-  accessToken: "urjCBREf6OrLpC3oWCrPqQtt",
+  accessToken: 'urjCBREf6OrLpC3oWCrPqQtt',
   use: [apiPlugin],
   components,
   apiOptions: {
-    region: ''
-  }
+    region: '',
+  },
 });
 
 function MyApp({ Component, pageProps }) {

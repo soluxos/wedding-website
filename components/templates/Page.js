@@ -2,6 +2,7 @@ import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
 import styled from 'styled-components';
 import Navigation from '@components/layout/Navigation';
 import Theme from '@components/Theme';
+import Footer from '@components/layout/Footer';
 
 const Page = ({ blok }) => (
   <Theme>
@@ -11,6 +12,7 @@ const Page = ({ blok }) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
     </StyledMain>
+    <Footer />
   </Theme>
 );
 

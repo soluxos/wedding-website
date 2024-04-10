@@ -1,5 +1,8 @@
 // next.config.js
 module.exports = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  webpack5: true,
   webpack(config, { webpack }) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
@@ -34,5 +37,17 @@ module.exports = {
   compiler: {
     // Enables the styled-components SWC transform
     styledComponents: true,
+  },
+  babel: {
+    plugins: [
+      [
+        'styled-components',
+        {
+          ssr: true,
+          displayName: true,
+          preprocess: false, // Not needed for Next.js
+        },
+      ],
+    ],
   },
 };

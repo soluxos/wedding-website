@@ -13,6 +13,7 @@
     "@motionone/easing": "^10.17.0",
     "@storyblok/react": "^2.4.7",
     "@svgr/webpack": "^8.1.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "framer-motion": "6.0.0",
     "next": "^12.1.0",
     "react": "17.0.2",

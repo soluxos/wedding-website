@@ -5,21 +5,24 @@ import ImageGrid from '@components/molecules/ImageGrid';
 import Image from '@components/atoms/Image/Image';
 import CompassIcon from '@public/assets/Compass.svg';
 
-export default function Location({ blok }) {
+export default function Menu({ blok }) {
   // Block types are:
-  // blok.title, blok.content, blok.buttonContainer, blok.agenda
+  // blok.title, blok.content, blok.buttonContainer, blok.address
 
   return (
     <StyledContainer {...storyblokEditable(blok)}>
       <StyledContent>
-        <StyledPip>Agenda</StyledPip>
+        <StyledPip>Menu</StyledPip>
         <h2>{blok.content}</h2>
       </StyledContent>
-      <StyledAgendaContainer>
-        {blok.agenda.map((nestedBlok) => (
-          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-        ))}
-      </StyledAgendaContainer>
+      <ImageGridContainer>
+        <ImageGrid columns="5fr 3fr 4fr 4fr">
+          <Image src="/content/menu/menu-1.jpg" animatedGrain alt="location" />
+          <Image src="/content/menu/menu-2.jpg" animatedGrain alt="location" />
+          <Image src="/content/menu/menu-3.jpg" animatedGrain alt="location" />
+          <Image src="/content/menu/menu-4.jpg" animatedGrain alt="location" />
+        </ImageGrid>
+      </ImageGridContainer>
     </StyledContainer>
   );
 }
@@ -27,7 +30,6 @@ export default function Location({ blok }) {
 const StyledContainer = styled.div`
   display: flex;
   max-width: 100%;
-  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -53,8 +55,18 @@ const StyledPip = styled.span`
   padding: 4px 10px;
 `;
 
-const StyledAgendaContainer = styled.div`
+const ImageGridContainer = styled.div`
   display: flex;
-  width: 100%;
+  gap: 20px;
   flex-direction: column;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const StyledLocationContainer = styled.div`
+  display: flex;
+  gap: 4px;
 `;

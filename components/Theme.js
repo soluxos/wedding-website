@@ -17,6 +17,7 @@ export const themeValues = {
     grey: '#ABABAB',
     darkGrey: '#7A7A7A',
     primary: '#23422b',
+    secondary: '#F8A72E',
     background: '#FFF1E4',
   },
   transitions: {
@@ -43,6 +44,11 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     color: ${(props) => props.theme.colors.primary};
+  }
+
+  h2 {
+    font-size: 36px;
+    line-height: 1.5;
   }
 
   p {

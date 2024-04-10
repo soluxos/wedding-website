@@ -10,9 +10,9 @@ export default function Location({ blok }) {
   // blok.title, blok.content, blok.buttonContainer, blok.address
 
   return (
-    <StyledContainer {...storyblokEditable(blok)}>
+    <StyledContainer {...storyblokEditable(blok)} id="location">
       <StyledContent>
-        <StyledPip>About us</StyledPip>
+        <StyledPip>Location</StyledPip>
         <h2>{blok.title}</h2>
         <p>{blok.content}</p>
         <StyledButtonContainer>
@@ -26,17 +26,17 @@ export default function Location({ blok }) {
         </StyledLocationContainer>
       </StyledContent>
       <ImageGridContainer>
-        <ImageGrid columns="3fr 4fr 3fr 6fr">
-          <Image src="https://picsum.photos/400/387" animatedGrain alt="location" />
-          <Image src="https://picsum.photos/401/387" animatedGrain alt="location" />
-          <Image src="https://picsum.photos/500/387" animatedGrain alt="location" />
-          <Image src="https://picsum.photos/700/387" animatedGrain alt="location" />
+        <ImageGrid columns="6fr 3fr 4fr 3fr">
+          <Image src="/content/pelham/pelham-1.jpg" animatedGrain alt="pelham 1" />
+          <Image src="/content/pelham/pelham-2.jpg" animatedGrain alt="pelham 2" />
+          <Image src="/content/pelham/pelham-3.jpg" animatedGrain alt="pelham 3" />
+          <Image src="/content/pelham/pelham-4.jpg" animatedGrain alt="pelham 4" />
         </ImageGrid>
-        <ImageGrid columns="3fr 6fr 3fr 5fr">
-          <Image src="https://picsum.photos/402/387" animatedGrain alt="about" />
-          <Image src="https://picsum.photos/501/387" animatedGrain alt="about" />
-          <Image src="https://picsum.photos/803/387" animatedGrain alt="about" />
-          <Image src="https://picsum.photos/423/387" animatedGrain alt="about" />
+        <ImageGrid columns="3fr 5fr 3fr 5fr">
+          <Image src="/content/pelham/pelham-5.jpg" animatedGrain alt="pelham 5" />
+          <Image src="/content/pelham/pelham-6.jpg" animatedGrain alt="pelham 6" />
+          <Image src="/content/pelham/pelham-7.jpg" animatedGrain alt="pelham 7" />
+          <Image src="/content/pelham/pelham-8.jpg" animatedGrain alt="pelham 8" />
         </ImageGrid>
       </ImageGridContainer>
     </StyledContainer>
@@ -57,8 +57,8 @@ const StyledContainer = styled.div`
 `;
 
 const StyledContent = styled.div`
-  width: 100%;
-  max-width: 46.875%;
+  width: 750px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;

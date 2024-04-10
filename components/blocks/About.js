@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ImageGrid from '@components/molecules/ImageGrid';
 import Image from '@components/atoms/Image/Image';
+import CountdownFromDate from '@components/utils/CountdownFromDate';
 
 export default function About({ blok }) {
   const { content } = blok;
@@ -9,7 +10,10 @@ export default function About({ blok }) {
     <StyledContainer>
       <StyledContent>
         <StyledPip>About us</StyledPip>
-        <h2>{content}</h2>
+        <Styledh2>
+          <StyledCountdownFromDate inputDate="12-10-2015" />
+          {content}
+        </Styledh2>
       </StyledContent>
       <ImageGrid>
         <Image src="https://picsum.photos/400/387" animatedGrain alt="location" />
@@ -19,6 +23,14 @@ export default function About({ blok }) {
     </StyledContainer>
   );
 }
+
+const StyledCountdownFromDate = styled(CountdownFromDate)``;
+
+const Styledh2 = styled.h2`
+  span {
+    color: ${(props) => props.theme.colors.secondary};
+  }
+`;
 
 const StyledContainer = styled.div`
   display: flex;
@@ -30,8 +42,8 @@ const StyledContainer = styled.div`
 `;
 
 const StyledContent = styled.div`
-  width: 100%;
-  max-width: 46.875%;
+  width: 750px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Navigation() {
   return (
-    <StyledNav className="boxed-width">
+    <StyledNav className="">
       <img src="/Logo.svg" alt="logo" />
       <StyledUl>
         <li>
@@ -33,10 +33,12 @@ export default function Navigation() {
 const StyledNav = styled.nav`
   position: static;
   top: 0;
-  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 750px;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
 `;
 
 const StyledUl = styled.ul`

@@ -9,6 +9,8 @@ import About from '@components/blocks/About';
 import LinkButton from '@components/blocks/LinkButton';
 import Agenda from '@components/blocks/Agenda';
 import AgendaItem from '@components/blocks/AgendaItem';
+import Menu from '@components/blocks/Menu';
+import WeddingGift from '@components/blocks/WeddingGift';
 
 const components = {
   page: Page,
@@ -18,6 +20,8 @@ const components = {
   linkButton: LinkButton,
   agenda: Agenda,
   agendaItem: AgendaItem,
+  menu: Menu,
+  weddingGift: WeddingGift,
 };
 
 storyblokInit({

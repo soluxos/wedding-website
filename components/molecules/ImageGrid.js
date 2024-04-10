@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function About(props) {
-  const { children, columns = '4fr 8fr 4fr' } = props;
+  const { children, columns = '4fr 8fr 4fr', height = '387px' } = props;
   return <StyledImageRow columns={columns}>{children}</StyledImageRow>;
 }
 
@@ -19,12 +19,12 @@ const StyledImageRow = styled.div`
     max-width: 100%;
     width: 100%;
     max-height: 100%;
-    height: 387px;
+    height: ${(props) => props.height};
     object-fit: cover;
     border-radius: 10px;
   }
 
   > div {
-    height: 387px;
+    height: ${(props) => props.height};
   }
 `;

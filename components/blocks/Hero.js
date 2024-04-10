@@ -26,10 +26,10 @@ const StyledContainer = styled.div`
 `;
 
 const Styledh1 = styled.h1`
-  font-size: 64px;
-  line-height: 125%;
-  max-width: 1135px;
-  text-align: center;
+  font-size: 36px;
+  line-height: 150%;
+  width: 750px;
+  max-width: 100%;
 `;
 
 const StyledImage = styled(Image)`

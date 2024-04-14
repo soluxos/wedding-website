@@ -79,7 +79,7 @@ export default function RsvpForm(props) {
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
         <form name="rsvp" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?
             <StyledRadioLabel selected={rsvp === 'yes'} onClick={() => setRsvp('yes')}>

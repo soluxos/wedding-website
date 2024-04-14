@@ -62,6 +62,7 @@ export default function RsvpForm(props) {
   if (isSubmitted) {
     return (
       <StyledModalOverlay>
+        <StyledOverlayBackdrop onClick={toggleModal} />
         <StyledModalInner>
           <StyledCloseButton onClick={toggleModal}>X</StyledCloseButton>
           <Styledh2>Your RSVP has been sent off! Thank you so much! 🥳🥳🥳</Styledh2>
@@ -78,7 +79,7 @@ export default function RsvpForm(props) {
         <Styledh2>
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
-        <form name="rsvp" data-netlify="true" onSubmit={handleSubmit}>
+        <form name="rsvp" method="POST" data-netlify="true" onSubmit={handleSubmit}>
           <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?

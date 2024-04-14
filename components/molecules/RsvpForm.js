@@ -46,22 +46,18 @@ export default function RsvpForm(props) {
     }
   }, [modal]);
 
-  React.useEffect(() => {
-    // Check for query parameter to see if the form was submitted
-    const urlParams = new URLSearchParams(window.location.search);
-    const formSubmitted = urlParams.get('submitted');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
 
-    if (formSubmitted === 'true') {
-      setModal(true);
+    try {
       setIsSubmitted(true);
+    } catch (error) {
+      console.error('Failed to submit RSVP:', error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    if (modal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, []);
+  };
 
   if (isSubmitted) {
     return (
@@ -83,7 +79,7 @@ export default function RsvpForm(props) {
         <Styledh2>
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
-        <form name="rsvp" method="POST" data-netlify="true" action="/?submitted=true">
+        <form name="rsvp" method="POST" data-netlify="true" onSubmit={handleSubmit}>
           <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?
@@ -120,62 +116,66 @@ export default function RsvpForm(props) {
           </TopLevelLabel>
           {rsvp === 'yes' && (
             <>
-              <TopLevelLabel>
-                Number Attending:
-                <StyledNumberPicker>
-                  <StyledButton type="button" onClick={decrementNumberAttending}>
-                    -
-                  </StyledButton>
-                  <PeopleAttending>
-                    {numberAttending === 1 ? `Just 1 🥳` : `${numberAttending} people coming 🥳`}
-                  </PeopleAttending>
-                  <StyledButton type="button" onClick={incrementNumberAttending}>
-                    +
-                  </StyledButton>
-                </StyledNumberPicker>
-              </TopLevelLabel>
-              {attendees.slice(0, numberAttending).map((attendee, i) => (
-                <PersonContainer key={i}>
-                  <TopLevelLabel>
-                    Person {i + 1} Name:
-                    <input
-                      type="text"
-                      name={`attendeeName${i}`}
-                      placeholder='e.g. "John Doe"'
-                      value={attendee.name}
-                      onChange={(e) => handleAttendeeNameChange(i, e.target.value)}
-                    />
-                  </TopLevelLabel>
-                  <StyledRadioLabel
-                    selected={attendee.foodOption === 'meat'}
-                    onClick={() => handleFoodOptionChange(i, 'meat')}
-                  >
-                    <StyledHiddenRadio
-                      type="radio"
-                      name={`foodOption${i}`}
-                      value="meat"
-                      checked={attendee.foodOption === 'meat'}
-                      onChange={() => handleFoodOptionChange(i, 'meat')} // Add this line
-                    />
-                    <span>🥩</span>
-                    <span>I’d like meat please</span>
-                  </StyledRadioLabel>
-                  <StyledRadioLabel
-                    selected={attendee.foodOption === 'veggie'}
-                    onClick={() => handleFoodOptionChange(i, 'veggie')}
-                  >
-                    <StyledHiddenRadio
-                      type="radio"
-                      name={`foodOption${i}`}
-                      value="veggie"
-                      checked={attendee.foodOption === 'veggie'}
-                      onChange={() => handleFoodOptionChange(i, 'veggie')} // Add this line
-                    />
-                    <span>🥕</span>
-                    <span>I’d like the veggie option</span>
-                  </StyledRadioLabel>
-                </PersonContainer>
-              ))}
+              <VisibleSection visible={rsvp === 'yes'}>
+                <TopLevelLabel>
+                  Number Attending:
+                  <StyledNumberPicker>
+                    <StyledButton type="button" onClick={decrementNumberAttending}>
+                      -
+                    </StyledButton>
+                    <PeopleAttending>
+                      {numberAttending === 1 ? `Just 1 🥳` : `${numberAttending} people coming 🥳`}
+                    </PeopleAttending>
+                    <StyledButton type="button" onClick={incrementNumberAttending}>
+                      +
+                    </StyledButton>
+                  </StyledNumberPicker>
+                </TopLevelLabel>
+                {[0, 1, 2].map((index) => (
+                  <PersonContainer key={index} visible={index < numberAttending}>
+                    <TopLevelLabel>
+                      Person {index + 1} Name:
+                      <input
+                        type="text"
+                        name={`attendeeName${index}`}
+                        placeholder='e.g. "John Doe"'
+                        value={attendees[index] ? attendees[index].name : ''}
+                        onChange={(e) => handleAttendeeNameChange(index, e.target.value)}
+                      />
+                    </TopLevelLabel>
+                    <StyledRadioLabel
+                      selected={attendees[index] ? attendees[index].foodOption === 'meat' : false}
+                      onClick={() => handleFoodOptionChange(index, 'meat')}
+                    >
+                      <StyledHiddenRadio
+                        type="radio"
+                        name={`foodOption${index}`}
+                        value="meat"
+                        checked={attendees[index] ? attendees[index].foodOption === 'meat' : false}
+                        onChange={() => handleFoodOptionChange(index, 'meat')}
+                      />
+                      <span>🥩</span>
+                      <span>I’d like meat please</span>
+                    </StyledRadioLabel>
+                    <StyledRadioLabel
+                      selected={attendees[index] ? attendees[index].foodOption === 'veggie' : false}
+                      onClick={() => handleFoodOptionChange(index, 'veggie')}
+                    >
+                      <StyledHiddenRadio
+                        type="radio"
+                        name={`foodOption${index}`}
+                        value="veggie"
+                        checked={
+                          attendees[index] ? attendees[index].foodOption === 'veggie' : false
+                        }
+                        onChange={() => handleFoodOptionChange(index, 'veggie')}
+                      />
+                      <span>🥕</span>
+                      <span>I’d like the veggie option</span>
+                    </StyledRadioLabel>
+                  </PersonContainer>
+                ))}
+              </VisibleSection>
             </>
           )}
           <TopLevelLabel>
@@ -190,6 +190,22 @@ export default function RsvpForm(props) {
 }
 
 // ... Styled components go here ...
+
+const VisibleSection = styled.div`
+  visibility: ${({ visible }) => (visible ? 'visible' : 'collapse')};
+  height: ${({ visible }) => (visible ? 'auto' : '0')};
+  overflow: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;
+
+const PersonContainer = styled.div`
+  display: ${({ visible }) => (visible ? 'flex' : 'none')}; // Hide the container if not visible
+  flex-direction: column;
+  gap: 10px;
+  // Add any additional styles as needed
+`;
 
 const PeopleAttending = styled.div`
   font-size: 16px;
@@ -212,12 +228,6 @@ const StyledCloseButton = styled.button`
     background: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.background};
   }
-`;
-
-const PersonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 `;
 
 const StyledNumberPicker = styled.div`

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function RsvpForm(props) {
-  const { toggleModal, modal } = props;
+  const { toggleModal, modal, setModal } = props;
   const [rsvp, setRsvp] = React.useState(null); // Tracks the RSVP response
   const [numberAttending, setNumberAttending] = React.useState(1);
   const [attendees, setAttendees] = React.useState([{ name: '', foodOption: 'meat' }]);
@@ -38,19 +38,6 @@ export default function RsvpForm(props) {
     }
   };
 
-  const handleSubmit = async (event) => {
-    // event.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Failed to submit RSVP:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   React.useEffect(() => {
     if (modal) {
       document.body.style.overflow = 'hidden';
@@ -58,6 +45,23 @@ export default function RsvpForm(props) {
       document.body.style.overflow = 'auto';
     }
   }, [modal]);
+
+  React.useEffect(() => {
+    // Check for query parameter to see if the form was submitted
+    const urlParams = new URLSearchParams(window.location.search);
+    const formSubmitted = urlParams.get('submitted');
+
+    if (formSubmitted === 'true') {
+      setModal(true);
+      setIsSubmitted(true);
+    }
+
+    if (modal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, []);
 
   if (isSubmitted) {
     return (
@@ -79,7 +83,7 @@ export default function RsvpForm(props) {
         <Styledh2>
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
-        <form name="rsvp" method="POST" data-netlify="true" onSubmit={handleSubmit}>
+        <form name="rsvp" method="POST" data-netlify="true" action="/?submitted=true">
           <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?

@@ -20,7 +20,7 @@ export default function Page({ blok }) {
   return (
     <Theme>
       <Navigation toggleModal={toggleModal} />
-      <RsvpForm toggleModal={toggleModal} modal={modal} />
+      <RsvpForm toggleModal={toggleModal} modal={modal} setModal={setModal} />
       <StyledMain className="boxed-width" {...storyblokEditable(blok)}>
         {blok.body.map((nestedBlok) => (
           <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />

@@ -2,28 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-export default function Navigation() {
+export default function Navigation(props) {
+  const { toggleModal } = props;
+
   return (
     <StyledNav className="">
       <img src="/Logo.svg" alt="logo" />
       <StyledUl>
         <li>
-          <StyledLink href="/test">Home</StyledLink>
+          <StyledLink href="/">Home</StyledLink>
         </li>
         <li>
-          <StyledLink href="#2">Venue</StyledLink>
+          <StyledLink href="#venue">Venue</StyledLink>
         </li>
         <li>
-          <StyledLink href="#3">Agenda</StyledLink>
+          <StyledLink href="#agenda">Agenda</StyledLink>
         </li>
         <li>
-          <StyledLink href="#4">FAQ</StyledLink>
+          <StyledLink href="#menu">Menu</StyledLink>
         </li>
         <li>
-          <StyledLink href="#5">Contact</StyledLink>
-        </li>
-        <li>
-          <StyledLink href="#6">RSVP</StyledLink>
+          <StyledButton onClick={() => toggleModal()}>RSVP</StyledButton>
         </li>
       </StyledUl>
     </StyledNav>
@@ -57,10 +56,22 @@ const StyledUl = styled.ul`
 const StyledLink = styled.a`
   color: ${(props) => props.theme.colors.grey};
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
 
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
+`;
+
+const StyledButton = styled.button`
+  color: ${(props) => props.theme.colors.white};
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  height: 32px;
+  background-color: ${(props) => props.theme.colors.primary};
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
 `;

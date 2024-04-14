@@ -51,9 +51,14 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
   }
 
-  p {
+  p, textarea {
     font-size: 16px;
     color: ${(props) => props.theme.colors.darkGrey};
+  }
+
+  textarea {
+    font-size: 16px;
+    font-family: 'Satoshi', sans-serif;
   }
 
   .boxed-width {

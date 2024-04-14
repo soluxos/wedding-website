@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function Footer() {
   return (
-    <StyledNav className="boxed-width">
+    <StyledNav>
       <StyledColumn>
         <img src="/Logo.svg" alt="logo" />
         <SmallP>Made by Callum & Dawn</SmallP>
@@ -11,22 +11,19 @@ export default function Footer() {
       <StyledColumn>
         <StyledUl>
           <li>
-            <h4>Links</h4>
-          </li>
-          <li>
             <StyledLink href="/">Home</StyledLink>
           </li>
           <li>
-            <StyledLink href="/">Venue</StyledLink>
+            <StyledLink href="#venue">Venue</StyledLink>
           </li>
           <li>
-            <StyledLink href="/">Agenda</StyledLink>
+            <StyledLink href="#agenda">Agenda</StyledLink>
           </li>
           <li>
-            <StyledLink href="/">Contact</StyledLink>
+            <StyledLink href="#menu">Menu</StyledLink>
           </li>
           <li>
-            <StyledLink href="/">RSVP</StyledLink>
+            <StyledButton onClick={() => toggleModal()}>RSVP</StyledButton>
           </li>
         </StyledUl>
       </StyledColumn>
@@ -42,10 +39,12 @@ const SmallP = styled.p`
 const StyledNav = styled.nav`
   position: static;
   top: 0;
-  padding: 160px 40px 40px 40px;
+  padding: 80px 40px 40px 40px;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
 `;
 
 const StyledColumn = styled.div`
@@ -56,10 +55,13 @@ const StyledColumn = styled.div`
 
 const StyledUl = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   list-style-type: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
 `;
 
 const StyledLink = styled.a`
@@ -71,4 +73,16 @@ const StyledLink = styled.a`
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
+`;
+
+const StyledButton = styled.button`
+  color: ${(props) => props.theme.colors.white};
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  height: 32px;
+  background-color: ${(props) => props.theme.colors.primary};
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
 `;

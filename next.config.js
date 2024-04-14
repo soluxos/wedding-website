@@ -37,16 +37,4 @@ module.exports = {
     // Enables the styled-components SWC transform
     styledComponents: true,
   },
-  babel: {
-    plugins: [
-      [
-        'styled-components',
-        {
-          ssr: true,
-          displayName: true,
-          preprocess: false, // Not needed for Next.js
-        },
-      ],
-    ],
-  },
 };

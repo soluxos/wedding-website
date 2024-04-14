@@ -39,7 +39,7 @@ export default function RsvpForm(props) {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setIsSubmitting(true);
 
     try {

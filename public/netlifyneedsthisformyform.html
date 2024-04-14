@@ -1,0 +1,81 @@
+<form name="rsvp" method="POST" data-netlify="true">
+  <input type="hidden" name="form-name" value="rsvp" />
+  <label>
+    Firstly, can you make it?
+    <label>
+      <input type="radio" name="rsvp" value="yes" />
+      <span>👍</span>
+      <span>Yes! We’ll be there!</span>
+    </label>
+    <label>
+      <input type="radio" name="rsvp" value="no" />
+      <span>👎</span>
+      <span>Sadly not, but congratulations!</span>
+    </label>
+  </label>
+  <label>
+    Email address:
+    <input type="text" name="email" placeholder="example@examplemail.com" />
+  </label>
+  <label>
+    Phone number:
+    <input type="text" name="phone" placeholder="01234 567890" />
+  </label>
+  <!-- Assuming maximum number of attendees are 3 based on increment/decrement logic -->
+  <!-- Attendee 1 -->
+  <div>
+    <label>
+      Person 1 Name:
+      <input type="text" name="attendeeName0" placeholder='e.g. "John Doe"' />
+    </label>
+    <label>
+      <input type="radio" name="foodOption0" value="meat" checked />
+      <span>🥩</span>
+      <span>I’d like meat please</span>
+    </label>
+    <label>
+      <input type="radio" name="foodOption0" value="veggie" />
+      <span>🥕</span>
+      <span>I’d like the veggie option</span>
+    </label>
+  </div>
+  <!-- Attendee 2 -->
+  <div>
+    <label>
+      Person 2 Name:
+      <input type="text" name="attendeeName1" placeholder='e.g. "Jane Doe"' />
+    </label>
+    <label>
+      <input type="radio" name="foodOption1" value="meat" checked />
+      <span>🥩</span>
+      <span>I’d like meat please</span>
+    </label>
+    <label>
+      <input type="radio" name="foodOption1" value="veggie" />
+      <span>🥕</span>
+      <span>I’d like the veggie option</span>
+    </label>
+  </div>
+  <!-- Attendee 3 -->
+  <div>
+    <label>
+      Person 3 Name:
+      <input type="text" name="attendeeName2" placeholder='e.g. "Alex Smith"' />
+    </label>
+    <label>
+      <input type="radio" name="foodOption2" value="meat" checked />
+      <span>🥩</span>
+      <span>I’d like meat please</span>
+    </label>
+    <label>
+      <input type="radio" name="foodOption2" value="veggie" />
+      <span>🥕</span>
+      <span>I’d like the veggie option</span>
+    </label>
+  </div>
+  <label>
+    Comments:
+    <textarea name="comments" placeholder="Add any additional comments here"></textarea>
+  </label>
+  <input type="submit" value="💌 Send your RSVP" />
+</form>

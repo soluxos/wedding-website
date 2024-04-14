@@ -61,7 +61,7 @@ export default function RsvpForm(props) {
 
   if (isSubmitted) {
     return (
-      <StyledModalOverlay>
+      <StyledModalOverlay modal={modal}>
         <StyledOverlayBackdrop onClick={toggleModal} />
         <StyledModalInner>
           <StyledCloseButton onClick={toggleModal}>X</StyledCloseButton>

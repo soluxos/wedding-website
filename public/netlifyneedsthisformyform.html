@@ -4,86 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RSVP Form</title>
-    <script>
-      function encode(data) {
-        return Object.keys(data)
-          .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-          .join('&');
-      }
-
-      function handleSubmit(event) {
-        event.preventDefault();
-        const form = event.target;
-        const data = {
-          'form-name': form.getAttribute('name'),
-          rsvp: form.rsvp.value,
-          email: form.email.value,
-          phone: form.phone.value,
-          comments: form.comments.value,
-          attendees: JSON.stringify([
-            { name: form.attendeeName0.value, foodOption: form.foodOption0.value },
-            { name: form.attendeeName1.value, foodOption: form.foodOption1.value },
-            { name: form.attendeeName2.value, foodOption: form.foodOption2.value },
-          ]),
-        };
-
-        fetch(form.action, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: encode(data),
-        })
-          .then((response) => {
-            return response.ok ? alert('Success!') : alert('Error submitting form!');
-          })
-          .catch((error) => alert('Error: ' + error));
-      }
-    </script>
   </head>
   <body>
-    <form name="rsvp" onsubmit="handleSubmit(event)">
+    <form name="rsvp">
       <input type="hidden" name="form-name" value="rsvp" />
-      <label
-        >Firstly, can you make it? <input type="radio" name="rsvp" value="yes" /> Yes! We’ll be
-        there! <input type="radio" name="rsvp" value="no" /> Sadly not, but congratulations!
+
+      <!-- RSVP Confirmation Section -->
+      <label>
+        Firstly, can you make it?
+        <!-- Yes Option -->
+        <label>
+          <input type="radio" name="rsvp" value="yes" />
+          <span>👍</span>
+          <span>Yes! We’ll be there!</span>
+        </label>
+        <!-- No Option -->
+        <label>
+          <input type="radio" name="rsvp" value="no" />
+          <span>👎</span>
+          <span>Sadly not, but congratulations!</span>
+        </label>
       </label>
-      <label
-        >Email address:
+
+      <!-- Email Address Input -->
+      <label>
+        Email address:
         <input type="text" name="email" placeholder="example@examplemail.com" />
       </label>
-      <label
-        >Phone number:
+
+      <!-- Phone Number Input -->
+      <label>
+        Phone number:
         <input type="text" name="phone" placeholder="01234 567890" />
       </label>
-      <label
-        >Person 1 Name:
+
+      <!-- Attendees Section -->
+      <!-- Attendee 1 -->
+      <label>
+        Person 1 Name:
         <input type="text" name="attendeeName0" placeholder='e.g. "John Doe"' />
       </label>
-      <label
-        >Food Option for Person 1: <input type="radio" name="foodOption0" value="meat" /> Meat
-        <input type="radio" name="foodOption0" value="veggie" /> Veggie
+      <!-- Food Option for Attendee 1 -->
+      <label>
+        <input type="radio" name="foodOption0" value="meat" />
+        <span>🥩</span>
+        <span>I’d like meat please</span>
       </label>
-      <label
-        >Person 2 Name:
-        <input type="text" name="attendeeName1" placeholder='e.g. "John Doe"' />
+      <label>
+        <input type="radio" name="foodOption0" value="veggie" />
+        <span>🥕</span>
+        <span>I’d like the veggie option</span>
       </label>
-      <label
-        >Food Option for Person 2: <input type="radio" name="foodOption1" value="meat" /> Meat
-        <input type="radio" name="foodOption1" value="veggie" /> Veggie
+
+      <!-- Attendee 2 -->
+      <label>
+        Person 2 Name:
+        <input type="text" name="attendeeName1" placeholder='e.g. "Jane Smith"' />
       </label>
-      <label
-        >Person 3 Name:
-        <input type="text" name="attendeeName2" placeholder='e.g. "John Doe"' />
+      <!-- Food Option for Attendee 2 -->
+      <label>
+        <input type="radio" name="foodOption1" value="meat" />
+        <span>🥩</span>
+        <span>I’d like meat please</span>
       </label>
-      <label
-        >Food Option for Person 3: <input type="radio" name="foodOption2" value="meat" /> Meat
-        <input type="radio" name="foodOption2" value="veggie" /> Veggie
+      <label>
+        <input type="radio" name="foodOption1" value="veggie" />
+        <span>🥕</span>
+        <span>I’d like the veggie option</span>
       </label>
-      <label
-        >Comments:
+
+      <!-- Attendee 3 -->
+      <label>
+        Person 3 Name:
+        <input type="text" name="attendeeName2" placeholder='e.g. "Alex Johnson"' />
+      </label>
+      <!-- Food Option for Attendee 3 -->
+      <label>
+        <input type="radio" name="foodOption2" value="meat" />
+        <span>🥩</span>
+        <span>I’d like meat please</span>
+      </label>
+      <label>
+        <input type="radio" name="foodOption2" value="veggie" />
+        <span>🥕</span>
+        <span>I’d like the veggie option</span>
+      </label>
+
+      <!-- Comments Section -->
+      <label>
+        Comments:
         <textarea name="comments" placeholder="Add any additional comments here"></textarea>
       </label>
+
+      <!-- Submit Button -->
       <input type="submit" value="💌 Send your RSVP" />
     </form>
   </body>

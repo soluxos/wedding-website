@@ -53,7 +53,6 @@ export default function RsvpForm(props) {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
     setIsSubmitting(true);
 
     // Organize the form data
@@ -88,6 +87,8 @@ export default function RsvpForm(props) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
     }
+
+    event.preventDefault();
   };
 
   if (isSubmitted) {

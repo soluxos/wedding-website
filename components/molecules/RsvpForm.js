@@ -46,12 +46,6 @@ export default function RsvpForm(props) {
     }
   }, [modal]);
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  };
-
   // const handleSubmit = async (event) => {
   //   event.preventDefault();
   //   setIsSubmitting(true);
@@ -90,23 +84,9 @@ export default function RsvpForm(props) {
   //   }
   // };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const myForm = event.target;
-    const formData = new FormData(myForm);
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => navigate('/'))
-      .catch((error) => alert(error));
-  };
-
   if (isSubmitted) {
     return (
-      <StyledModalOverlay modal={modal}>
+      <StyledModalOverlay showmodal={modal ? 'true' : 'false'}>
         <StyledOverlayBackdrop onClick={toggleModal} />
         <StyledModalInner>
           <StyledCloseButton onClick={toggleModal}>X</StyledCloseButton>
@@ -117,14 +97,14 @@ export default function RsvpForm(props) {
   }
 
   return (
-    <StyledModalOverlay modal={modal}>
+    <StyledModalOverlay showmodal={modal ? 'true' : 'false'}>
       <StyledOverlayBackdrop onClick={toggleModal} />
       <StyledModalInner>
         <StyledCloseButton onClick={toggleModal}>X</StyledCloseButton>
         <Styledh2>
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
-        <form name="rsvp" method="POST" data-netlify="true" onSubmit={handleSubmit}>
+        <form name="rsvp" data-netlify="true">
           <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?
@@ -416,8 +396,8 @@ const StyledModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 100;
-  opacity: ${({ modal }) => (modal ? 1 : 0)};
-  pointer-events: ${({ modal }) => (modal ? 'all' : 'none')};
+  opacity: ${(props) => (props.showmodal === 'true' ? 1 : 0)};
+  pointer-events: ${(props) => (props.showmodal === 'true' ? 'all' : 'none')};
 
   &.show {
     opacity: 1;

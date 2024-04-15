@@ -52,42 +52,56 @@ export default function RsvpForm(props) {
       .join('&');
   };
 
-  const handleSubmit = async (event) => {
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   // Organize the form data
+  //   const formData = {
+  //     rsvp,
+  //     email: event.target.email.value,
+  //     phone: event.target.phone.value,
+  //     comments: event.target.comments.value,
+  //     attendees: attendees.map((attendee) => ({
+  //       name: attendee.name,
+  //       foodOption: attendee.foodOption,
+  //     })),
+  //   };
+
+  //   try {
+  //     const response = await fetch('/api/submit-rsvp', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     if (!response.ok) throw new Error(response.statusText);
+  //     const data = await response.json();
+  //     // Handle success
+  //     setIsSubmitting(false);
+  //     setIsSubmitted(true);
+  //     console.log('Form submitted successfully:', data);
+  //     // setModal(true); // You can activate this line if you're handling modals
+  //   } catch (error) {
+  //     // Handle errors
+  //     console.error('Form submission error:', error);
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
+    const myForm = event.target;
+    const formData = new FormData(myForm);
 
-    // Organize the form data
-    const formData = {
-      rsvp,
-      email: event.target.email.value,
-      phone: event.target.phone.value,
-      comments: event.target.comments.value,
-      attendees: attendees.map((attendee) => ({
-        name: attendee.name,
-        foodOption: attendee.foodOption,
-      })),
-    };
-
-    try {
-      const response = await fetch('/api/submit-rsvp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!response.ok) throw new Error(response.statusText);
-      const data = await response.json();
-      // Handle success
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      console.log('Form submitted successfully:', data);
-      // setModal(true); // You can activate this line if you're handling modals
-    } catch (error) {
-      // Handle errors
-      console.error('Form submission error:', error);
-      setIsSubmitting(false);
-    }
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => navigate('/'))
+      .catch((error) => alert(error));
   };
 
   if (isSubmitted) {

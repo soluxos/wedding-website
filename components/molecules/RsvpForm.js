@@ -46,43 +46,43 @@ export default function RsvpForm(props) {
     }
   }, [modal]);
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setIsSubmitting(true);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
 
-  //   // Organize the form data
-  //   const formData = {
-  //     rsvp,
-  //     email: event.target.email.value,
-  //     phone: event.target.phone.value,
-  //     comments: event.target.comments.value,
-  //     attendees: attendees.map((attendee) => ({
-  //       name: attendee.name,
-  //       foodOption: attendee.foodOption,
-  //     })),
-  //   };
+    // Organize the form data
+    const formData = {
+      rsvp,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      comments: event.target.comments.value,
+      attendees: attendees.map((attendee) => ({
+        name: attendee.name,
+        foodOption: attendee.foodOption,
+      })),
+    };
 
-  //   try {
-  //     const response = await fetch('/api/submit-rsvp', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-  //     if (!response.ok) throw new Error(response.statusText);
-  //     const data = await response.json();
-  //     // Handle success
-  //     setIsSubmitting(false);
-  //     setIsSubmitted(true);
-  //     console.log('Form submitted successfully:', data);
-  //     // setModal(true); // You can activate this line if you're handling modals
-  //   } catch (error) {
-  //     // Handle errors
-  //     console.error('Form submission error:', error);
-  //     setIsSubmitting(false);
-  //   }
-  // };
+    try {
+      const response = await fetch('/api/submit-rsvp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) throw new Error(response.statusText);
+      const data = await response.json();
+      // Handle success
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      console.log('Form submitted successfully:', data);
+      // setModal(true); // You can activate this line if you're handling modals
+    } catch (error) {
+      // Handle errors
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+    }
+  };
 
   if (isSubmitted) {
     return (
@@ -104,7 +104,7 @@ export default function RsvpForm(props) {
         <Styledh2>
           Let us know if you’re coming! If you are, who’s coming, and what you want to eat.
         </Styledh2>
-        <form name="rsvp" data-netlify="true">
+        <form name="rsvp" data-netlify="true" onSubmit={handleSubmit}>
           <input type="hidden" name="form-name" value="rsvp" />
           <TopLevelLabel>
             Firstly, can you make it?

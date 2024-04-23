@@ -18,10 +18,10 @@ export default async function handler(req, res) {
         Email: ${email}
         Phone: ${phone}
         Comments: ${comments}
-        Attendees: ${attendees}
+        Attendees:
+        ${attendees.map((att) => `${att.name} - Food Option: ${att.foodOption}`).join('\n')}
       `,
     };
-
     try {
       await sgMail.send(msg);
       // Email sent and RSVP data processed

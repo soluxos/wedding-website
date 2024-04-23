@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     // Define your SendGrid Email Data
     const msg = {
-      to: 'callumharrod1994@hotmail.co.uk', // Email address where you want to receive the emails. Change this.
+      to: 'callumharrod1994@gmail.com', // Email address where you want to receive the emails. Change this.
       from: 'callumharrod1994@hotmail.co.uk', // Verify your sending email within SendGrid and update this.
       subject: 'New RSVP Submission',
       text: `

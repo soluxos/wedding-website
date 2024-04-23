@@ -26,7 +26,7 @@ export default function Page({ blok }) {
           <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))}
       </StyledMain>
-      <Footer />
+      <Footer toggleModal={toggleModal} />
     </Theme>
   );
 }

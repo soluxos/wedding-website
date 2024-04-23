@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
-export default function Footer() {
+export default function Footer(props) {
+  const { toggleModal } = props;
+
   return (
     <StyledNavWrapper>
-      <Navigation />
+      <Navigation toggleModal={toggleModal} />
     </StyledNavWrapper>
     // <StyledNav>
     //   <StyledColumn>

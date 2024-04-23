@@ -316,7 +316,8 @@ const StyledHiddenRadio = styled.input`
 const StyledModalInner = styled.div`
   max-width: 480px;
   width: 100%;
-  max-height: 600px;
+  max-height: calc(100% - 40px);
+  height: 600px;
   background-color: ${(props) => props.theme.colors.background};
   padding: 40px;
   border-radius: 10px;

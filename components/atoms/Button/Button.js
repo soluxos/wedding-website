@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
 
 export default function Button(props) {
   const { children, url } = props;
@@ -31,16 +30,9 @@ const sharedStyle = css`
   font-weight: 500;
   transition: ${(props) => props.theme.transitions.all};
 
-  /* &:hover {
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.white};
-
-    svg {
-      path {
-        fill: ${(props) => props.theme.colors.white};
-      }
-    }
-  } */
+  &:hover {
+    background-color: ${(props) => props.theme.colors.white};
+  }
 `;
 
 const StyledLink = styled.a`

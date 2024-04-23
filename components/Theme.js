@@ -49,6 +49,10 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 36px;
     line-height: 1.5;
+
+    @media (max-width: 480px) {
+      font-size: 24px;
+    }
   }
 
   p, textarea {

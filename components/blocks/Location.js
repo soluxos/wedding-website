@@ -26,13 +26,13 @@ export default function Location({ blok }) {
         </StyledLocationContainer>
       </StyledContent>
       <ImageGridContainer>
-        <ImageGrid columns="6fr 3fr 4fr 3fr">
+        <ImageGrid columns="6fr 3fr 4fr 3fr" mobileColumns="1fr 1fr" mobileHeight="200px">
           <Image src="/content/pelham/pelham-1.jpg" animatedGrain alt="pelham 1" />
           <Image src="/content/pelham/pelham-2.jpg" animatedGrain alt="pelham 2" />
           <Image src="/content/pelham/pelham-3.jpg" animatedGrain alt="pelham 3" />
           <Image src="/content/pelham/pelham-4.jpg" animatedGrain alt="pelham 4" />
         </ImageGrid>
-        <ImageGrid columns="3fr 5fr 3fr 5fr">
+        <ImageGrid columns="3fr 5fr 3fr 5fr" mobileColumns="1fr 1fr" mobileHeight="200px">
           <Image src="/content/pelham/pelham-5.jpg" animatedGrain alt="pelham 5" />
           <Image src="/content/pelham/pelham-6.jpg" animatedGrain alt="pelham 6" />
           <Image src="/content/pelham/pelham-7.jpg" animatedGrain alt="pelham 7" />
@@ -53,6 +53,10 @@ const StyledContainer = styled.div`
 
   h2 {
     font-size: 64px;
+
+    @media (max-width: 480px) {
+      font-size: 36px;
+    }
   }
 `;
 

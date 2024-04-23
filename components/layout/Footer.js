@@ -1,35 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
+import Navigation from './Navigation';
 
 export default function Footer() {
   return (
-    <StyledNav>
-      <StyledColumn>
-        <img src="/Logo.svg" alt="logo" />
-        <SmallP>Made by Callum & Dawn</SmallP>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledUl>
-          <li>
-            <StyledLink href="/">Home</StyledLink>
-          </li>
-          <li>
-            <StyledLink href="#venue">Venue</StyledLink>
-          </li>
-          <li>
-            <StyledLink href="#agenda">Agenda</StyledLink>
-          </li>
-          <li>
-            <StyledLink href="#menu">Menu</StyledLink>
-          </li>
-          <li>
-            <StyledButton onClick={() => toggleModal()}>RSVP</StyledButton>
-          </li>
-        </StyledUl>
-      </StyledColumn>
-    </StyledNav>
+    <StyledNavWrapper>
+      <Navigation />
+    </StyledNavWrapper>
+    // <StyledNav>
+    //   <StyledColumn>
+    //     <img src="/Logo.svg" alt="logo" />
+    //     <SmallP>Made by Callum & Dawn</SmallP>
+    //   </StyledColumn>
+    //   <StyledColumn>
+    //     <StyledUl>
+    //       <li>
+    //         <StyledLink href="/">Home</StyledLink>
+    //       </li>
+    //       <li>
+    //         <StyledLink href="#venue">Venue</StyledLink>
+    //       </li>
+    //       <li>
+    //         <StyledLink href="#agenda">Agenda</StyledLink>
+    //       </li>
+    //       <li>
+    //         <StyledLink href="#menu">Menu</StyledLink>
+    //       </li>
+    //       <li>
+    //         <StyledButton onClick={() => toggleModal()}>RSVP</StyledButton>
+    //       </li>
+    //     </StyledUl>
+    //   </StyledColumn>
+    // </StyledNav>
   );
 }
+
+const StyledNavWrapper = styled.div`
+  margin-top: 80px;
+  margin-bottom: 40px;
+`;
 
 const SmallP = styled.p`
   font-size: 13px;

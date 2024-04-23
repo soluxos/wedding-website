@@ -27,6 +27,17 @@ const StyledContainer = styled.div`
   padding: 40px 0;
   border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    div {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
   h4 {
     font-size: 20px;
     color: ${(props) => props.theme.colors.primary};

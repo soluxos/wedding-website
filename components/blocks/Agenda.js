@@ -10,7 +10,7 @@ export default function Location({ blok }) {
   // blok.title, blok.content, blok.buttonContainer, blok.agenda
 
   return (
-    <StyledContainer {...storyblokEditable(blok)}>
+    <StyledContainer {...storyblokEditable(blok)} id="agenda">
       <StyledContent>
         <StyledPip>Agenda</StyledPip>
         <h2>{blok.content}</h2>

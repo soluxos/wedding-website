@@ -23,6 +23,10 @@ const StyledContainer = styled.div`
   margin-top: 160px;
   gap: 80px;
   width: 100%;
+
+  @media (max-width: 480px) {
+    margin-top: 80px;
+  }
 `;
 
 const Styledh1 = styled.h1`
@@ -30,6 +34,10 @@ const Styledh1 = styled.h1`
   line-height: 150%;
   width: 750px;
   max-width: 100%;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 const StyledImage = styled(Image)`

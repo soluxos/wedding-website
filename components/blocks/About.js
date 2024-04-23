@@ -7,7 +7,7 @@ import CountdownFromDate from '@components/utils/CountdownFromDate';
 export default function About({ blok }) {
   const { content } = blok;
   return (
-    <StyledContainer>
+    <StyledContainer id="about">
       <StyledContent>
         <StyledPip>About us</StyledPip>
         <Styledh2>
@@ -16,9 +16,9 @@ export default function About({ blok }) {
         </Styledh2>
       </StyledContent>
       <ImageGrid>
-        <Image src="https://picsum.photos/400/387" animatedGrain alt="location" />
-        <Image src="https://picsum.photos/800/387" animatedGrain alt="location" />
-        <Image src="https://picsum.photos/420/387" animatedGrain alt="location" />
+        <Image src="/content/photos/photo-1.jpg" animatedGrain alt="location" />
+        <Image src="/content/photos/photo-2.jpg" animatedGrain alt="location" />
+        <Image src="/content/photos/photo-3.jpg" animatedGrain alt="location" />
       </ImageGrid>
     </StyledContainer>
   );

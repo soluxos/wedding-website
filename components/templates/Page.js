@@ -54,4 +54,8 @@ const StyledMain = styled.main`
   width: 100%;
   max-width: 1600px;
   padding: 0 40px;
+
+  @media (max-width: 480px) {
+    gap: 80px;
+  }
 `;

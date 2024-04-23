@@ -10,13 +10,13 @@ export default function Menu({ blok }) {
   // blok.title, blok.content, blok.buttonContainer, blok.address
 
   return (
-    <StyledContainer {...storyblokEditable(blok)}>
+    <StyledContainer {...storyblokEditable(blok)} id="menu">
       <StyledContent>
         <StyledPip>Menu</StyledPip>
         <h2>{blok.content}</h2>
       </StyledContent>
       <ImageGridContainer>
-        <ImageGrid columns="5fr 3fr 4fr 4fr">
+        <ImageGrid columns="5fr 3fr 4fr 4fr" mobileColumns="1fr 1fr">
           <Image src="/content/menu/menu-1.jpg" animatedGrain alt="location" />
           <Image src="/content/menu/menu-2.jpg" animatedGrain alt="location" />
           <Image src="/content/menu/menu-3.jpg" animatedGrain alt="location" />

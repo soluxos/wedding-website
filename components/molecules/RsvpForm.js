@@ -323,6 +323,7 @@ const StyledModalInner = styled.div`
   overflow: scroll;
   position: relative;
   z-index: 101;
+  margin: 20px;
 
   form {
     display: flex;

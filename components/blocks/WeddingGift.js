@@ -16,8 +16,8 @@ export default function WeddingGift({ blok }) {
         <h2>{blok.content}</h2>
       </StyledContent>
       <ImageGridContainer>
-        <ImageGrid columns="1fr" height="480px">
-          <Image src="https://picsum.photos/1600/480" animatedGrain alt="location" />
+        <ImageGrid columns="1fr" height="540px">
+          <Image src="/content/maldives.jpg" animatedGrain alt="location" />
         </ImageGrid>
       </ImageGridContainer>
     </StyledContainer>
@@ -27,6 +27,7 @@ export default function WeddingGift({ blok }) {
 const StyledContainer = styled.div`
   display: flex;
   max-width: 100%;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -56,14 +57,5 @@ const ImageGridContainer = styled.div`
   display: flex;
   gap: 20px;
   flex-direction: column;
-`;
-
-const StyledButtonContainer = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-const StyledLocationContainer = styled.div`
-  display: flex;
-  gap: 4px;
+  width: 100%;
 `;

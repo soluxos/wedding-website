@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 
 export default function Navigation(props) {
   const { toggleModal } = props;
@@ -13,7 +12,10 @@ export default function Navigation(props) {
           <StyledLink href="/">Home</StyledLink>
         </li>
         <li>
-          <StyledLink href="#venue">Venue</StyledLink>
+          <StyledLink href="#about">About</StyledLink>
+        </li>
+        <li>
+          <StyledLink href="#location">Venue</StyledLink>
         </li>
         <li>
           <StyledLink href="#agenda">Agenda</StyledLink>
@@ -38,6 +40,16 @@ const StyledNav = styled.nav`
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 40px;
+    padding-bottom: 0;
+
+    img {
+      align-self: center;
+    }
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -50,7 +62,12 @@ const StyledUl = styled.ul`
   align-items: center;
   padding: 10px 20px;
   list-style-type: none;
-  border-radius: 100px;
+  border-radius: 29px;
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    height: auto;
+  }
 `;
 
 const StyledLink = styled.a`

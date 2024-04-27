@@ -6,10 +6,13 @@ const CountdownFromDate = ({ inputDate }) => {
   useEffect(() => {
     const calculateElapsedTime = () => {
       const currentDate = new Date();
-      const delta = currentDate - new Date(inputDate);
+      // Ensure the inputDate is in a format that's compatible with iOS devices.
+      // This could mean using an ISO 8601 format or parsing the date manually.
+      const targetDate = new Date(inputDate.replace(/-/g, '/').replace(/T.+/, ''));
+      const delta = currentDate - targetDate;
 
-      const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365;
-      const millisecondsPerMonth = 1000 * 60 * 60 * 24 * 30;
+      const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25; // Account for leap years
+      const millisecondsPerMonth = 1000 * 60 * 60 * 24 * 30; // Approximation
       const millisecondsPerDay = 1000 * 60 * 60 * 24;
 
       const years = Math.floor(delta / millisecondsPerYear);
@@ -33,7 +36,10 @@ const CountdownFromDate = ({ inputDate }) => {
       setElapsedTime(`${result} ago`);
     };
 
-    calculateElapsedTime();
+    const intervalId = setInterval(calculateElapsedTime, 1000); // Update every second
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, [inputDate]);
 
   return <span>{elapsedTime}</span>;

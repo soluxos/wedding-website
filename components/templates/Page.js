@@ -66,7 +66,7 @@ const StyledMain = styled.main`
 
 const StyledBanner = styled.div`
   background-color: rgb(35, 66, 43);
-  height: 40px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;

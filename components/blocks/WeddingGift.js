@@ -4,6 +4,7 @@ import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
 import ImageGrid from '@components/molecules/ImageGrid';
 import Image from '@components/atoms/Image/Image';
 import CompassIcon from '@public/assets/Compass.svg';
+import Button from '../atoms/Button/Button';
 
 export default function WeddingGift({ blok }) {
   // Block types are:
@@ -14,6 +15,13 @@ export default function WeddingGift({ blok }) {
       <StyledContent>
         <StyledPip>Wedding Gifts</StyledPip>
         <h2>{blok.content}</h2>
+        <p>
+          If you'd like to send some money digitally, feel free to use Callum's Monzo Me link below.
+          Or if you're oldschool, we'll have somewhere for cash on the day!
+        </p>
+        <StyledButtonContainer>
+          <Button url="https://monzo.me/callumharrod?h=3AqOGk">Send money with Monzo</Button>
+        </StyledButtonContainer>
       </StyledContent>
       <ImageGridContainer>
         <ImageGrid columns="1fr" height="540px">
@@ -58,4 +66,9 @@ const ImageGridContainer = styled.div`
   gap: 20px;
   flex-direction: column;
   width: 100%;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  gap: 20px;
 `;

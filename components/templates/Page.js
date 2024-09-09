@@ -19,6 +19,9 @@ export default function Page({ blok }) {
 
   return (
     <Theme>
+      <StyledBanner>
+        <p>Make sure you get to Pelham House for 13:00 on the 16th September</p>
+      </StyledBanner>
       <Navigation toggleModal={toggleModal} />
       <RsvpForm toggleModal={toggleModal} modal={modal} setModal={setModal} />
       <StyledMain className="boxed-width" {...storyblokEditable(blok)}>
@@ -58,5 +61,17 @@ const StyledMain = styled.main`
 
   @media (max-width: 480px) {
     gap: 80px;
+  }
+`;
+
+const StyledBanner = styled.div`
+  background-color: rgb(35, 66, 43);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: ${({ theme }) => theme.colors.background};
   }
 `;
